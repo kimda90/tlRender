@@ -266,7 +266,8 @@ jobs:
         cd tlRender/src/tlRender-build
         tests/tltest/tltest
 
-  # \bug Temporarily disable USD which is failing to download boost
+  # \bug USD build fails with this error:
+  # Failed to download https://github.com/oneapi-src/oneTBB/archive/refs/tags/2018_U1.zip
   macos-12-package:
     runs-on: macos-12
 
@@ -427,18 +428,15 @@ jobs:
       run: |
         etc\Windows\windows-build-gha.bat Debug
 
-    # \bug Temporarily disable tests on Windows. All the tests seem to pass
-    # but GitHub actions reports this error at the end:
-    # Error: Process completed with exit code -1073741819.
-    #- name: Run tests
-    #  shell: cmd
-    #  run: |
-    #    cd build
-    #    cd tlRender\src\tlRender-build
-    #    tests\tltest\Debug\tltest
+    - name: Run tests
+      shell: cmd
+      run: |
+        cd build
+        cd tlRender\src\tlRender-build
+        tests\tltest\Debug\tltest
 
-  # \bug USD has errors in the boost build with windows-latest
-  # \bug USD has errors in the MaterialX build with windows-2019
+  # \bug USD build fails with this error:
+  # Failed to run 'cmake --build . --config Release --target install -- -j4' in D:\a\tlRender\tlRender\build\install\build\MaterialX-1.38.10
   windows-package:
     runs-on: windows-latest
     #runs-on: windows-2019

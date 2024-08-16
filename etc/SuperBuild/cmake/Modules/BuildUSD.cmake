@@ -1,16 +1,9 @@
-# \todo The Windows build currently only works in "Release" and "RelWithDebInfo"
-# configurations. Building in "Debug" gives these error messages:
-#
-# LINK : fatal error LNK1104: cannot open file 'tbb_debug.lib'
-#
-# However both "tbb_debug.lib" and "tbb_debug.dll" exist in the install directory.
-
 include(ExternalProject)
 
 set(USD_DEPS)
 
 set(USD_GIT_REPOSITORY https://github.com/PixarAnimationStudios/OpenUSD.git)
-set(USD_GIT_TAG v24.05)
+set(USD_GIT_TAG v24.08)
 
 string(TOLOWER ${CMAKE_BUILD_TYPE} CMAKE_BUILD_TYPE_LC)
 set(USD_ARGS --build-variant ${CMAKE_BUILD_TYPE_LC})
